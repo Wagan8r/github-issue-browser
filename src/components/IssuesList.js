@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import Issue from './Issue'
+import Issue from './Issue';
+import {connect} from 'react-redux';
+import {refreshIssues} from '../actions/IssueActions';
 
-export default class IssuesList extends Component{
+class IssuesList extends Component{
 
     render(){
         const {issues} = this.props;
@@ -9,10 +11,24 @@ export default class IssuesList extends Component{
             <div className="issues-container">
                 <div className="issues-list">
                     {issues.map(t => (
-                        <Issue issue={t}/>
+                        <Issue key={t.id} issue={t}/>
                     ))}
                 </div>
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        issues: state
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        refresh: () => dispatch(refreshIssues())
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(IssuesList);
