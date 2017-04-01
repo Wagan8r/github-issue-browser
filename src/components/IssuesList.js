@@ -6,9 +6,10 @@ import {refreshIssues} from '../actions/IssueActions';
 class IssuesList extends Component{
 
     render(){
-        const {issues} = this.props;
+        const {issues, refresh} = this.props;
         return (
             <div className="issues-container">
+                <button onClick={()=> refresh()}>Refresh</button>
                 <div className="issues-list">
                     {issues.map(t => (
                         <Issue key={t.id} issue={t}/>

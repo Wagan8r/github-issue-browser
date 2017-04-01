@@ -18,11 +18,13 @@
   },
   "homepage": "https://github.com/Wagan8r/github-issue-browser#readme",
   "dependencies": {
+    "axios": "^0.16.0",
     "immutable": "^3.8.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",
