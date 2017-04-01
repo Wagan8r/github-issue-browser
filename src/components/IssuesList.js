@@ -22,7 +22,7 @@ class IssuesList extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        issues: state
+        issues: state.get('issues')
     };
 };
 
