@@ -12,10 +12,34 @@ export function refreshRequested(){
     };
 }
 
-export function refreshSuccess(data){
+export function refreshSuccess(data, linkHeader, currentPage){
+    let links = linkHeader.split(',');
+    let hasNext = false;
+    let hasPrevious = false;
+    let totalPages = currentPage;
+    links.forEach(link => {
+        if(link.search('rel="next"') > -1){
+            hasNext = true;
+        }
+        if(link.search('rel="prev"') > -1){
+            hasPrevious = true;
+        }
+        if(link.search('rel="last"') > -1){
+            let matches = link.match(/page=\d+/);
+            if(matches.length === 1){
+                let match = matches[0];
+                let start = match.indexOf('=')+1;
+                totalPages = parseInt(match.substring(start, match.length))
+            }
+        }
+    });
     return {
         type: REFRESH_SUCCESS,
-        issues: data
+        issues: data,
+        page: currentPage,
+        hasNext: hasNext,
+        hasPrevious: hasPrevious,
+        totalPages: totalPages
     };
 }
 
@@ -26,14 +50,21 @@ export function refreshFailure(data){
     };
 }
 
-export function refreshIssues(){
+export function refreshIssues(page){
 
     return dispatch => {
         dispatch(refreshRequested());
 
-        return Axios.get(ISSUES_URL)
+        let config = {
+            params: {
+                page: page,
+                sort: 'updated'
+            }
+        };
+
+        return Axios.get(ISSUES_URL, config)
             .then(response => {
-                dispatch(refreshSuccess(response.data));
+                dispatch(refreshSuccess(response.data, response.headers.link, page));
             })
             .catch(error => {
                 dispatch(refreshFailure(error));

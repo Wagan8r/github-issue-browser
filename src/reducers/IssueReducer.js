@@ -9,7 +9,14 @@ const initial = Map({
 export default function(state=initial, action){
     switch(action.type){
         case REFRESH_SUCCESS:
-            return state.update('issues', oldValue => List(action.issues));
+            let updates = Map({
+                issues: List(action.issues),
+                page: action.page,
+                hasNext: action.hasNext,
+                hasPrevious: action.hasPrevious,
+                totalPages: action.totalPages
+            });
+            return state.merge(updates);
         default:
             return state;
     }
