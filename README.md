@@ -8,7 +8,7 @@ Make sure that you have [Node.js](https://nodejs.org/en/download/) installed. Th
 
     npm start
     
-Open up your favorite browser \*cough\*Chrome\*cough\* and go to:
+Open up your favorite web browser \*cough\*Chrome\*cough\* and go to:
 
     http://localhost:3000
     
