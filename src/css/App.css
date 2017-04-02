@@ -10,6 +10,12 @@ body{
     text-align: center;
 }
 
+.issues-header-subtitle{
+    width: 100%;
+    text-align: center;
+    color: #888;
+}
+
 .issues-container{
     width: 1000px;
     margin: auto;
@@ -50,6 +56,9 @@ body{
     text-align: center;
 }
 
+.issues-list{
+}
+
 .issue-container{
     font-size: 1em;
     background-color: #fff;
@@ -69,6 +78,7 @@ body{
     font-size: 1.2em;
     font-weight: 600;
     padding-left: 0.4em;
+    text-decoration: none;
 }
 
 .status-label{

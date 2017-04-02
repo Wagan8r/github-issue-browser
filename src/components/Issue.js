@@ -10,7 +10,7 @@ export default class Issue extends Component{
             <table className="issue-container">
                 <tr>
                     <td className="issue-stripe" rowSpan="3"></td>
-                    <td className="issue-title">{issue.number} - {issue.title}</td>
+                    <a className="issue-title" href={issue.html_url} target="_blank">{issue.number} - {issue.title}</a>
                     <td className="status-label">{issue.state}</td>
                 </tr>
                 <tr>

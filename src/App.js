@@ -12,7 +12,7 @@ import styles from './css/App.css';
 let createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
 
 let store = createStoreWithMiddleware(IssueReducer);
-store.dispatch(refreshIssues(1));
+store.dispatch(refreshIssues(1, 7));
 
 let rootElement = document.getElementById('app');
 

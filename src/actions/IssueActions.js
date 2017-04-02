@@ -50,15 +50,19 @@ export function refreshFailure(data){
     };
 }
 
-export function refreshIssues(page){
+export function refreshIssues(page, dayOffset){
 
     return dispatch => {
         dispatch(refreshRequested());
 
+        let date = new Date();
+        date.setDate(date.getDate()-dayOffset);
+
         let config = {
             params: {
                 page: page,
-                sort: 'updated'
+                sort: 'updated',
+                since: date.toISOString()
             }
         };
 
