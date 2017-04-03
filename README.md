@@ -6,6 +6,7 @@ To run the app, first clone from GitHub
 
 Make sure that you have [Node.js](https://nodejs.org/en/download/) installed. Then navigate to the project root and run:
 
+    npm install
     npm start
     
 Open up your favorite web browser \*cough\*Chrome\*cough\* and go to:
